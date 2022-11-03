@@ -1,0 +1,22 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git://g.csail.mit.edu/xv6-labs-2020
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "github"]
+	url = git@github.com:xjqxziii/xv6-labs-2020.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+[branch "util"]
+	remote = origin
+	merge = refs/heads/util
+[user]
+	name = xjqxziii
+	email = xjqxziii@163.com
+[branch "syscall"]
+	remote = origin
+	merge = refs/heads/syscall

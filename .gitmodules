@@ -1,0 +1,3 @@
+[submodule "xv6-labs-2020"]
+	path = xv6-labs-2020
+	url = https://github.com/xjqxziii/xv6-labs-2020
