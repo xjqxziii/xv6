@@ -12,11 +12,9 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN apt-get install -y git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu 
-RUN apt-get remove -y qemu-system-misc
-RUN apt-get install -y qemu-system-misc=1:4.2-3ubuntu6
-
-RUN apt-get install -y python
+RUN apt-get install -y git build-essential
+RUN apt-get install -y cmake
+RUN apt-get install -y gdb-multiarch qemu-system-misc=1:4.2-3ubuntu6 gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu
 
 # ssh服务器
 # 参考 https://github.com/rastasheep/ubuntu-sshd/blob/ed6fffcaf5a49eccdf821af31c1594e3c3061010/18.04/Dockerfile
@@ -31,6 +29,8 @@ RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
+
+RUN echo "set auto-load safe-path /" >> /root/.gdbinit
 
 
 # 删除 apt update 产生的缓存文件
